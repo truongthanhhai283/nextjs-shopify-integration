@@ -3,10 +3,10 @@
 // Describe data structures in more natural way
 // Describe objects
 // Shipment, Orders
-interface Person {
-    name: string
-    age: number
-}
+// interface Person {
+//     name: string
+//     age: number
+// }
 
 // type aliases
 // to describe function types
@@ -17,20 +17,40 @@ interface Person {
 
 type Data = string
 
+// interface PersonLoggerFn {
+//     (name: string, age: number): string
+// }
+
+type PersonLoggerFn = (name: string, age: number) => string
+
+// class types
+class Person {
+    name: string
+    age: number
+
+    /**
+     *
+     */
+    constructor(name, age) {
+        this.name = name
+        this.age = age
+    }
+}
+
 export default function play() {
     const name: Data = "Trương Thanh Hải"
     const age: number = 26
 
-    const person: Person = {
-        name: "Hai Truong",
-        age: 1996
-    }
+    // const person: Person = {
+    //     name: "Hai Truong",
+    //     age: 1996
+    // }
 
-    function logPersonInfo(personName: string, personAge: number) {
-        const info = `Name: ${personName}, age: ${personAge}`
-        console.log(info);
-        return info
-    }
+    // function logPersonInfo(personName: string, personAge: number): string {
+    //     const info = `Name: ${personName}, age: ${personAge}`
+    //     console.log(info);
+    //     return info
+    // }
 
     // person: { name: string, age: number }
     function logPersonInfo2(person: Person) {
@@ -39,6 +59,14 @@ export default function play() {
         return info
     }
 
-    logPersonInfo(name, age)
+    const logPersonInfo: PersonLoggerFn = (personName: string, personAge: number): string => {
+        const info = `Name: ${personName}, age: ${personAge}`
+        console.log(info);
+        return info
+    }
+
+    const log: string = logPersonInfo(name, age)
+
+    const person = new Person("Hai Kute", 100)
     logPersonInfo2(person)
 }
