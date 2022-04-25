@@ -1,11 +1,11 @@
+import { useEffect } from "react";
+
+import play from "playground";
+
 export default function Home() {
-  const message: string = "Hello Hai Kute";
+  useEffect(() => {
+    play();
+  }, []);
 
-  let options: AddEventListenerOptions;
-  let b: NodeJS.Process;
-
-  const person: Person = {
-    name: "Truong Thanh Hai",
-  };
-  return <>{message}</>;
+  return <>Hello World</>;
 }
