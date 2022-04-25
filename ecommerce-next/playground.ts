@@ -21,7 +21,7 @@ type Data = string
 //     (name: string, age: number): string
 // }
 
-type PersonLoggerFn = (name: string, age: number) => string
+type PersonLoggerFn = (name: string, age?: number) => string
 
 // class types
 class Person {
@@ -31,7 +31,7 @@ class Person {
     /**
      *
      */
-    constructor(name, age) {
+    constructor(name: string, age: number) {
         this.name = name
         this.age = age
     }
@@ -59,13 +59,13 @@ export default function play() {
         return info
     }
 
-    const logPersonInfo: PersonLoggerFn = (personName: string, personAge: number): string => {
+    const logPersonInfo: PersonLoggerFn = (personName: string, personAge: number = 0): string => {
         const info = `Name: ${personName}, age: ${personAge}`
         console.log(info);
         return info
     }
 
-    const log: string = logPersonInfo(name, age)
+    const log: string = logPersonInfo(name)
 
     const person = new Person("Hai Kute", 100)
     logPersonInfo2(person)
