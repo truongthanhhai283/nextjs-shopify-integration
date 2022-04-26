@@ -171,7 +171,6 @@ export default function play() {
         console.log(car.maxSpeed);
         break;
       default: console.log("Default");
-
     }
   }
 
