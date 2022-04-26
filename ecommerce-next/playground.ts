@@ -38,8 +38,8 @@ class Person {
 }
 
 export default function play() {
-    const name: Data = "Trương Thanh Hải"
-    const age: number = 26
+    // const name: Data = "Trương Thanh Hải"
+    // const age: number = 26
 
     // const person: Person = {
     //     name: "Hai Truong",
@@ -53,20 +53,36 @@ export default function play() {
     // }
 
     // person: { name: string, age: number }
-    function logPersonInfo2(person: Person) {
-        const info = `Name: ${person.name}, age: ${person.age}`
-        console.log(info);
-        return info
+    // function logPersonInfo2(person: Person) {
+    //     const info = `Name: ${person.name}, age: ${person.age}`
+    //     console.log(info);
+    //     return info
+    // }
+
+    // const logPersonInfo: PersonLoggerFn = (personName: string, personAge: number = 0): string => {
+    //     const info = `Name: ${personName}, age: ${personAge}`
+    //     console.log(info);
+    //     return info
+    // }
+
+    // const log: string = logPersonInfo(name)
+
+    // const person = new Person("Hai Kute", 100)
+    // logPersonInfo2(person)
+
+    // ============================= Narrowing 
+    const names: string[] = ["Filip", "John"]
+    const numbers: Array<number> = [1, 2, 3, 4, 5, 6]
+
+    const random = Math.random() > 0.5 ? "Hello" : [1, 2]
+
+    if (typeof random === "string") {
+        const upper = random.toUpperCase()
+    } else {
+        console.log(random);
     }
 
-    const logPersonInfo: PersonLoggerFn = (personName: string, personAge: number = 0): string => {
-        const info = `Name: ${personName}, age: ${personAge}`
-        console.log(info);
-        return info
-    }
+    console.log(random.length);
 
-    const log: string = logPersonInfo(name)
 
-    const person = new Person("Hai Kute", 100)
-    logPersonInfo2(person)
 }
