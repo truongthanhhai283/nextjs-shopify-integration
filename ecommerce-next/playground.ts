@@ -37,17 +37,27 @@ class Person {
     }
 }
 
-interface Person {
-    name: string
-    age: number
-}
+// interface Person {
+//     name: string
+//     age: number
+// }
 
-interface BusinessPerson extends Person {
-    salary: number
-}
+// interface BusinessPerson extends Person {
+//     salary: number
+// }
 
 interface AcademicPerson extends Person {
     publications: string[]
+}
+
+type Car = {
+    name: string
+}
+
+type RaceCar = {
+    speed: number
+} & Car & {
+    mileage: number
 }
 
 export default function play() {
@@ -97,20 +107,32 @@ export default function play() {
 
     // console.log(random.length);
 
-    const person: AcademicPerson = {
-        name: "Hai",
-        age: 26,
-        publications: ["1", "2"]
+    // const person: AcademicPerson = {
+    //     name: "Hai",
+    //     age: 26,
+    //     publications: ["1", "2"]
+    // }
+
+    // const person2: BusinessPerson = {
+    //     name: "Hai",
+    //     age: 26,
+    //     salary: 100000
+    // }
+
+    // function logPerson(person: Person) {
+
+    // }
+    // logPerson(person2)
+
+    const car: RaceCar = {
+        name: "BMW",
+        speed: 100,
+        mileage: 50,
     }
 
-    const person2: BusinessPerson = {
-        name: "Hai",
-        age: 26,
-        salary: 100000
-    }
-
-    function logPerson(person: Person) {
+    function logCar(car: Car) {
 
     }
-    logPerson(person2)
+
+    logCar(car)
 }
