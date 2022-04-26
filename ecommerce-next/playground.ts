@@ -37,6 +37,19 @@ class Person {
     }
 }
 
+interface Person {
+    name: string
+    age: number
+}
+
+interface BusinessPerson extends Person {
+    salary: number
+}
+
+interface AcademicPerson extends Person {
+    publications: string[]
+}
+
 export default function play() {
     // const name: Data = "Trương Thanh Hải"
     // const age: number = 26
@@ -71,18 +84,33 @@ export default function play() {
     // logPersonInfo2(person)
 
     // ============================= Narrowing 
-    const names: string[] = ["Filip", "John"]
-    const numbers: Array<number> = [1, 2, 3, 4, 5, 6]
+    // const names: string[] = ["Filip", "John"]
+    // const numbers: Array<number> = [1, 2, 3, 4, 5, 6]
 
-    const random = Math.random() > 0.5 ? "Hello" : [1, 2]
+    // const random = Math.random() > 0.5 ? "Hello" : [1, 2]
 
-    if (typeof random === "string") {
-        const upper = random.toUpperCase()
-    } else {
-        console.log(random);
+    // if (typeof random === "string") {
+    //     const upper = random.toUpperCase()
+    // } else {
+    //     console.log(random);
+    // }
+
+    // console.log(random.length);
+
+    const person: AcademicPerson = {
+        name: "Hai",
+        age: 26,
+        publications: ["1", "2"]
     }
 
-    console.log(random.length);
+    const person2: BusinessPerson = {
+        name: "Hai",
+        age: 26,
+        salary: 100000
+    }
 
+    function logPerson(person: Person) {
 
+    }
+    logPerson(person2)
 }
