@@ -7,3 +7,6 @@ nextjs-shopify-integration
 
 ## ts intro
     - ES5 Features
+
+## Project
+    - Integrate Custom API Server: clone git@github.com:Jerga99/next-shopify-local.git
