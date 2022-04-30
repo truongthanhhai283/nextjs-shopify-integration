@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import type { InferGetStaticPropsType } from "next";
 
 // 2. get all product
