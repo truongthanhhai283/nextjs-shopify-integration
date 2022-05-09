@@ -6,18 +6,22 @@ import getAllProducts from "@framework/product/get-all-product";
 
 // 1. Infer get static props
 export const getStaticProps = async () => {
-  const products = await getAllProducts();
-  
+  const productsList = await getAllProducts();
+  const allProducts = JSON.stringify(productsList);
+
   return {
     props: {
-      products,
+      allProducts,
     },
     revalidate: 4 * 60 * 60,
   };
 };
 
-const Home = ({ products }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  return <div>{JSON.stringify(products)}</div>;
+const Home = ({
+  allProducts,
+}: InferGetStaticPropsType<typeof getStaticProps>) => {
+  getAllProducts();
+  return <div>{allProducts}</div>;
 };
 
 export default Home;
