@@ -20,14 +20,13 @@ const fetchApi = async <T>({
                 'Content-Type': 'application/json'
             }
         })
-        console.log(resp);
     } catch (error) {
         // ?? is checking if first left hand expression is null or undefined -> if it is go with right expression
         // || is checking if first left hand expression is null, undefined, "", 0, false
         throw new Error(error ?? "Error")
     }
 
-    return resp
+    return resp.data
 }
 
 export default fetchApi
