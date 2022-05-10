@@ -20,7 +20,6 @@ export const getStaticProps = async () => {
 const Home = ({
   allProducts,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  getAllProducts();
   return <div>{allProducts}</div>;
 };
 
