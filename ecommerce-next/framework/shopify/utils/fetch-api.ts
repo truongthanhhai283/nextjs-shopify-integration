@@ -1,16 +1,10 @@
+import { ApiFetcherResults, ApiFetcherOptions } from './../../common/types/api';
 import axios from "axios"
 
-type FetcherParams = {
-    query: string
-}
-
-type FetcherResults<T> = { data: T }
-
 const fetchApi = async <T>({
-    query }: FetcherParams
-): Promise<FetcherResults<T>> => {
-    const url = `http://localhost:4000/graphql`
-
+    url,
+    query }: ApiFetcherOptions
+): Promise<ApiFetcherResults<T>> => {
     let resp
     try {
         resp = await axios.post(url, {
@@ -23,7 +17,7 @@ const fetchApi = async <T>({
     } catch (error) {
         // ?? is checking if first left hand expression is null or undefined -> if it is go with right expression
         // || is checking if first left hand expression is null, undefined, "", 0, false
-        throw new Error(error ?? "Error")
+        throw new Error(error, "Error")
     }
 
     return resp.data
