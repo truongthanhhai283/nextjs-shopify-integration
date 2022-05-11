@@ -1,6 +1,7 @@
 import React from "react";
 import type { InferGetStaticPropsType } from "next";
 import { getConfig } from "@framework/api/config";
+import { Layout } from "@components/common";
 
 // 2. get all product
 import getAllProducts from "@framework/product/get-all-product";
@@ -22,7 +23,9 @@ export const getStaticProps = async () => {
 const Home = ({
   allProducts,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  return <div>{allProducts}</div>;
+  return <>{allProducts}</>;
 };
+
+Home.Layout = Layout;
 
 export default Home;
