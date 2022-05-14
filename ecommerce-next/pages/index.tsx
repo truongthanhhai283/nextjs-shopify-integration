@@ -23,7 +23,7 @@ export const getStaticProps = async () => {
 const Home = ({
   allProducts,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  return <>{allProducts}</>;
+  return <div className="root">{allProducts}</div>;
 };
 
 Home.Layout = Layout;
