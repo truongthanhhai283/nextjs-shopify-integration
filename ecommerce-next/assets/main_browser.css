@@ -415,3 +415,7 @@ Ensure the default browser behavior of the `hidden` attribute.
 .static {
   position: static;
 }
+
+.fit {
+    min-height: calc(100vh - 88px);
+}
