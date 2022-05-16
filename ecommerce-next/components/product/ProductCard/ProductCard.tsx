@@ -3,6 +3,7 @@ import { FC } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
+import style from "./ProductCard.module.css";
 interface Props {
   product: Product;
 }
@@ -13,12 +14,13 @@ const ProductCard: FC<Props> = ({ product }) => {
   return (
     <>
       <Link href={`/products/${product.slug}`}>
-        <a>
-          <div>
-            <h3>
+        <a className={style.root}>
+          <div className={style.productBg}></div>
+          <div className={style.productTag}>
+            <h3 className={style.productTitle}>
               <span>{product.name}</span>
             </h3>
-            <span>86$</span>
+            <span className={style.productPrice}>86$</span>
           </div>
           <div>
             {product.images && (
