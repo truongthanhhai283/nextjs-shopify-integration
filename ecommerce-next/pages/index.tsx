@@ -8,7 +8,7 @@ import { Hero } from "@components/ui";
 import { Marquee } from "@components/ui";
 
 // 2. get all product
-import getAllProducts from "@framework/product/get-all-product";
+import { getAllProducts } from "@framework/product";
 
 // 1. Infer get static props
 export const getStaticProps = async () => {

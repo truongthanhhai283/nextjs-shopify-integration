@@ -5,8 +5,8 @@ import {
 } from "next";
 
 import { Layout } from "@components/common";
-import getAllProductsPaths from "@framework/product/get-all-products-paths";
 import { getConfig } from "@framework/api/config";
+import { getProduct, getAllProductsPaths } from "@framework/product";
 
 // fetch all of the products slug
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -23,11 +23,16 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps = async ({
   params,
 }: GetStaticPropsContext<{ slug: string }>) => {
+  const config = getConfig();
+
+  const { product } = await getProduct({
+    config,
+    variables: { slug: params!.slug },
+  });
+
   return {
     props: {
-      product: {
-        slug: params?.slug,
-      },
+      product,
     },
   };
 };
@@ -35,7 +40,12 @@ export const getStaticProps = async ({
 export default function ProductSlug({
   product,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-  return <div>{product.slug}</div>;
+  return (
+    <div>
+      {product.name}
+      {product.slug}
+    </div>
+  );
 }
 
 ProductSlug.Layout = Layout;
