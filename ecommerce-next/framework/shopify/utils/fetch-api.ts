@@ -3,12 +3,15 @@ import axios from "axios"
 
 const fetchApi = async <T>({
     url,
-    query }: ApiFetcherOptions
+    query,
+    variables
+}: ApiFetcherOptions
 ): Promise<ApiFetcherResults<T>> => {
     let resp
     try {
         resp = await axios.post(url, {
             query,
+            variables,
         }, {
             headers: {
                 'Content-Type': 'application/json'
