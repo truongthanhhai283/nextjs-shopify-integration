@@ -1,16 +1,34 @@
 import cn from "classnames";
-import { FC } from "react";
+import { FC, useState } from "react";
 import s from "./ProductView.module.css";
 import { Button, Container } from "@components/ui";
 import Image from "next/image";
 import { Product } from "@common/types/product";
-import { ProductSlider } from "@components/product";
-
+import { ProductSlider, Swatch } from "@components/product";
+import { Choices, getVariant } from "../helpers";
+import { useUI } from "@components/ui/context";
 interface Props {
   product: Product;
 }
 
 const ProductView: FC<Props> = ({ product }) => {
+  const [choices, setChoices] = useState<Choices>({});
+  const { openSidebar } = useUI();
+  const variant = getVariant(product, choices);
+
+  const addToCart = () => {
+    try {
+      const item = {
+        productId: String(product.id),
+        variantId: variant?.id,
+        variantOptions: variant?.options,
+      };
+      console.log(item);
+
+      openSidebar();
+    } catch (error) {}
+  };
+
   return (
     <Container>
       <div className={cn(s.root, "fit", "mb-5")}>
@@ -43,7 +61,28 @@ const ProductView: FC<Props> = ({ product }) => {
             {product.options.map((option) => (
               <div key={option.id} className="pb-4">
                 <h2 className="uppercase font-medium">{option.displayName}</h2>
-                <div className="flex flex-row py-4">Variants Options</div>
+                <div className="flex flex-row py-4">
+                  {option.values.map((optValue) => {
+                    const activeChoice =
+                      choices[option.displayName.toLocaleLowerCase()];
+                    return (
+                      <Swatch
+                        key={`${option.id}-${optValue.label}`}
+                        label={optValue.label}
+                        color={optValue.hexColor}
+                        variant={option.displayName}
+                        active={optValue.label.toLowerCase() === activeChoice}
+                        onClick={() =>
+                          setChoices({
+                            ...choices,
+                            [option.displayName.toLocaleLowerCase()]:
+                              optValue.label.toLocaleLowerCase(),
+                          })
+                        }
+                      />
+                    );
+                  })}
+                </div>
               </div>
             ))}
             <div className="pb-14 break-words w-full max-w-xl text-lg">
@@ -51,7 +90,7 @@ const ProductView: FC<Props> = ({ product }) => {
             </div>
           </section>
           <div>
-            <Button onClick={() => alert("Add to cart")}>Add to Cart</Button>
+            <Button onClick={addToCart}>Add to Cart</Button>
           </div>
         </div>
       </div>
