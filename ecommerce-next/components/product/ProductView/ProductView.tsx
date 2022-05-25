@@ -1,7 +1,7 @@
 import cn from "classnames";
 import { FC } from "react";
 import s from "./ProductView.module.css";
-import { Container } from "@components/ui";
+import { Button, Container } from "@components/ui";
 import Image from "next/image";
 import { Product } from "@common/types/product";
 import { ProductSlider } from "@components/product";
@@ -51,7 +51,7 @@ const ProductView: FC<Props> = ({ product }) => {
             </div>
           </section>
           <div>
-            <button className={s.button}>Add to Cart</button>
+            <Button onClick={() => alert("Add to cart")}>Add to Cart</Button>
           </div>
         </div>
       </div>
