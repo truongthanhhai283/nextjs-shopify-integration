@@ -1,7 +1,8 @@
 import { useApiProvider } from "@common"
-import { ApiHooks } from "@common/types/hooks"
+import { MutationHook } from "@common/types/hooks"
+import { ApiHooks } from "@common/types/api"
 
-export const useHook = (fn: (apiHooks: ApiHooks) => any) => {
+export const useHook = (fn: (apiHooks: ApiHooks) => MutationHook) => {
     const { hooks } = useApiProvider()
     return fn(hooks)
 }
