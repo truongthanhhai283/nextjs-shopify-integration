@@ -1,15 +1,15 @@
+import { API_URL } from './../const';
 import { ApiFetcherResults, ApiFetcherOptions } from './../../common/types/api';
 import axios from "axios"
 
 const fetchApi = async <T>({
-    url,
     query,
     variables
 }: ApiFetcherOptions
 ): Promise<ApiFetcherResults<T>> => {
     let resp
     try {
-        resp = await axios.post(url, {
+        resp = await axios.post(API_URL!, {
             query,
             variables,
         }, {
